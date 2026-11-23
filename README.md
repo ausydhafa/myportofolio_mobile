@@ -1,9 +1,6 @@
 # myportofolio_mobile
 
 ### Tugas 7
-
-### Tugas 7
-
 1. Widget tree adalah susunan widget secara hierarkis yang membentuk tampilan aplikasi Flutter. Setiap widget bisa memiliki widget lain sebagai child. Contohnya, MaterialApp menjadi root widget, kemudian menampilkan MyHomePage yang berisi Scaffold, AppBar, dan berbagai widget untuk menyusun konten halaman.Dengan struktur ini, tampilan aplikasi dapat dibangun dari komponen-komponen kecil yang saling terhubung.
 
 2. SingleChildScrollView: Memungkinkan halaman digulir.
@@ -30,3 +27,17 @@ Hot restart memulai ulang aplikasi Dart sehingga state sebelumnya direset. Hot r
 
 #### AI Disclosure
 Dalam pengerjaan Tugas 7, saya menggunakan ChatGPT (OpenAI) sebagai alat bantu. AI membantu saya menjelaskan lebih lanjut mengenai checklist yang perlu dilakukan untuk tugas 7 ini dan merekomendasikan penggunaan SingleChildScrollView. Selain itu, AI membantu saya membantu saya memahami beberapa pertanyaan refleksi yang awalnya tidak bisa saya jawab sendiri.
+
+### Tugas 8
+
+1. Navigator.push() digunakan untuk MEMBUKA halaman tanpa menutup halaman sebelumnya, sehingga pengguna bisa kembali dengan tombol Back. Navigator.pushReplacement() digunakan untuk menggantikan halaman yang sedang dibuka dengan halaman baru. Navigator.pop() digunakan untuk menutup halaman yang sedang aktif. Pada aplikasi ini, Navigator.push() digunakan ketika user memilih Tambah Education dari kartu homepage atau drawer. Sementara itu, menu Home menggunakan pushReplacement() agar pengguna bisa kembali ke halaman utama.
+
+2. Scaffold digunakan sebagai kerangka utama halaman yang berisi AppBar, Drawer, dan konten. AppBar menampilkan judul halaman, sedangkan Drawer memudahkan pengguna berpindah ke halaman lain. Dengan menggunakan struktur yang sama, tampilan setiap halaman menjadi lebih konsisten. Contohnya, warna indigo digunakan pada DrawerHeader dan AppBar di halaman Education Form.
+
+3. Form menggunakan Column untuk menyusun input secara vertikal dari atas ke bawah. Padding digunakan untuk memberikan jarak antarinput agar lebih rapi. SingleChildScrollView digunakan supaya seluruh formulir dapat discroll apabila tinggi konten melebihi ruang layar. Dengan demikian, pengguna tetap dapat mengakses semua field dan tombol Simpan, terutama ketika menggunakan layar ponsel atau ketika muncul keyboard.
+
+4. GlobalKey<FormState> digunakan untuk mengakses kondisi Form dan melakukan validasi terhadap seluruh input. Tiap TextFormField memiliki validator untuk memeriksa apakah input sudah sesuai ketentuan. Ketika tombol Simpan ditekan, _formKey.currentState!.validate() akan menjalankan seluruh validator. Contohnya, nama institusi yang kosong atau hanya spasi akan ditolak. Tahun selesai juga ditolak apabila formatnya bukan 4 digit atau lebih kecil dari tahun mulai. Penggunaan keyboard numerik saja tidak menjamin input valid karena pengguna masih dapat memasukkan data yang tidak sesuai ketentuan.
+
+#### AI Disclosure Tugas 8
+
+Dalam pengerjaan Tugas 8, tidak ada penggunaan AI.
