@@ -1,9 +1,11 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 import 'package:myportofolio_mobile/widgets/project_card.dart';
+import 'package:provider/provider.dart';
+import 'package:myportofolio_mobile/services/auth_state.dart';
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+  const MyHomePage({super.key});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -17,17 +19,21 @@ class MyHomePage extends StatelessWidget {
   final String nama = "Ausy Dhafa Adhitama";
   final String kelas = "PBP D";
 
-  final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Proyek", Icons.folder, Colors.blue),
-    ItemHomepage("Tambah Proyek", Icons.add_circle, Colors.teal),
-    ItemHomepage("Lihat Education", Icons.school, Colors.green),
-    ItemHomepage("Tambah Education", Icons.add_circle, Colors.deepPurple),
-    ItemHomepage("Lihat Experience", Icons.work, Colors.orange),
-    ItemHomepage("Logout", Icons.logout, Colors.red),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final isLoggedIn = context.watch<AuthState>().isLoggedIn;
+
+    final List<ItemHomepage> items = [
+      ItemHomepage("Lihat Proyek", Icons.folder, Colors.blue),
+      ItemHomepage("Tambah Proyek", Icons.add_circle, Colors.teal),
+      ItemHomepage("Lihat Education", Icons.school, Colors.green),
+      ItemHomepage("Lihat Experience", Icons.work, Colors.orange),
+
+      if (isLoggedIn)
+        ItemHomepage("Logout", Icons.logout, Colors.red)
+      else
+        ItemHomepage("Login", Icons.login, Colors.indigo),
+    ];
     // Scaffold menyediakan struktur visual dasar halaman (AppBar, Body, SnackBar).
     return Scaffold(
       // AppBar menampilkan bar bagian atas halaman aplikasi.
